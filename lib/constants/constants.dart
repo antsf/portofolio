@@ -1,5 +1,5 @@
 class Const {
   Const._();
 
-  static double get navigationBarHeight => 70;
+  static double get navigationBarHeight => 60;
 }

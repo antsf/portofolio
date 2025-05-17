@@ -31,9 +31,13 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
+  flutter_animate: ^4.5.2
   font_awesome_flutter: ^10.8.0
   google_fonts: ^6.2.1
-  js: ^0.7.1
+  provider: ^6.1.5
+  visibility_detector: ^0.4.0+2
+  web_smooth_scroll: ^2.0.0
+  # js: ^0.7.1
 
 dev_dependencies:
 
