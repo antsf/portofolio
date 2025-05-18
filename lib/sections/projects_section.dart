@@ -6,7 +6,6 @@ import 'package:flutter_animate/flutter_animate.dart'; // Import flutter_animate
 import 'package:flutter_portfolio/utils/extensions.dart';
 
 import '../components/neubrutalism_container.dart';
-import '../constants/colors.dart';
 
 class ProjectsSection extends StatefulWidget {
   const ProjectsSection({super.key});
@@ -115,7 +114,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
               style: GoogleFonts.spaceGrotesk(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
-                color: NeubrutalismColor.primaryText,
+                color: context.color.onBackground,
               ),
             )
                 .animate(
@@ -257,10 +256,10 @@ class _GridLayoutState extends State<_GridLayout> {
 
     if (context.isTablet) {
       crossAxisCount = 2;
-      childAspectRatio = 1.2; // Adjust as needed for tablet
+      // childAspectRatio = 1; // Adjust as needed for tablet
     } else if (context.isDesktop) {
       crossAxisCount = 3;
-      childAspectRatio = 1;
+      // childAspectRatio = 1;
     }
 
     return GridView.builder(
@@ -310,7 +309,7 @@ class _ProjectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NeubrutalismContainer.action(
+    return NeubrutalismContainer.action(context,
         onPressed: () {},
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -333,7 +332,7 @@ class _ProjectCard extends StatelessWidget {
               style: GoogleFonts.spaceGrotesk(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: NeubrutalismColor.primaryText,
+                color: context.color.onBackground,
               ),
             ),
             const SizedBox(height: 8),
@@ -341,7 +340,7 @@ class _ProjectCard extends StatelessWidget {
               project.description,
               style: GoogleFonts.inter(
                 fontSize: 14,
-                color: NeubrutalismColor.secondaryText,
+                color: context.color.secondary,
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,

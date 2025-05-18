@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/utils/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NeubrutalismContainer extends StatelessWidget {
-  final Color color;
+  final Color? color;
   final double spreadRadius;
   final bool isHover;
   final EdgeInsetsGeometry? padding;
@@ -12,7 +13,7 @@ class NeubrutalismContainer extends StatelessWidget {
 
   const NeubrutalismContainer({
     super.key,
-    this.color = Colors.white,
+    this.color,
     this.spreadRadius = 6,
     this.isHover = false,
     this.padding,
@@ -21,9 +22,10 @@ class NeubrutalismContainer extends StatelessWidget {
     this.animationCurve = Curves.easeOut,
   });
 
-  static Widget action({
+  static Widget action(
+    BuildContext context, {
     Key? key,
-    Color color = Colors.white,
+    Color? color,
     double spreadRadius = 6,
     EdgeInsetsGeometry? padding,
     required VoidCallback onPressed,
@@ -32,13 +34,13 @@ class NeubrutalismContainer extends StatelessWidget {
     Curve animationCurve = Curves.easeOut,
   }) {
     return _NeubrutalismInteractiveContainer(
-      color: color,
+      // color: color ?? context.color.surface,
       spreadRadius: spreadRadius,
       padding: padding,
       animationDuration: animationDuration,
       animationCurve: animationCurve,
       builder: (isHover) => NeubrutalismContainer(
-        color: color,
+        color: color ?? context.color.surface,
         spreadRadius: spreadRadius,
         isHover: isHover,
         padding: padding,
@@ -64,7 +66,7 @@ class NeubrutalismContainer extends StatelessWidget {
     Curve animationCurve = Curves.easeOut,
   }) {
     return _NeubrutalismInteractiveContainer(
-      color: color,
+      // color: color,
       spreadRadius: spreadRadius,
       animationDuration: animationDuration,
       animationCurve: animationCurve,
@@ -144,7 +146,7 @@ class NeubrutalismContainer extends StatelessWidget {
           child: Container(
             padding: padding,
             decoration: BoxDecoration(
-              color: color,
+              color: color ?? context.color.surface,
               border: Border.all(
                 color: Colors.black,
                 width: spreadRadius * 0.5,
@@ -159,7 +161,7 @@ class NeubrutalismContainer extends StatelessWidget {
 }
 
 class _NeubrutalismInteractiveContainer extends StatefulWidget {
-  final Color color;
+  // final Color color;
   final double spreadRadius;
   final EdgeInsetsGeometry? padding;
   final Widget Function(bool isHover) builder;
@@ -168,7 +170,7 @@ class _NeubrutalismInteractiveContainer extends StatefulWidget {
   final Curve animationCurve;
 
   const _NeubrutalismInteractiveContainer({
-    required this.color,
+    // required this.color,
     required this.spreadRadius,
     this.padding,
     required this.builder,

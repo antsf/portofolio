@@ -36,3 +36,8 @@ extension ContextExtensions on BuildContext {
           : 120.0;
   double get verticalPadding => screenHeight * 0.1; // Adjust as needed
 }
+
+extension ThemeExtensions on BuildContext {
+  ColorScheme get color => Theme.of(this).colorScheme;
+  TextTheme get text => Theme.of(this).textTheme;
+}

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/constants/colors.dart';
+import 'package:flutter_portfolio/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart'; // Import flutter_animate
 import 'package:provider/provider.dart';
 
 import '../components/neubrutalism_container.dart';
-import '../constants/colors.dart';
 import '../constants/constants.dart';
 import '../providers/scroll_provider.dart';
 import '../utils/extensions.dart'; // Import the extensions file
@@ -28,9 +29,10 @@ class HomeSection extends StatelessWidget {
       key: const Key('home_section'),
       padding: EdgeInsets.symmetric(
           horizontal: horizontalPadding, vertical: verticalPadding),
-      color: Colors.white,
+      color: context.color.surface,
       height:
-          isMobile ? null : context.screenHeight - Const.navigationBarHeight,
+          // isMobile ? null :
+          context.screenHeight - Const.navigationBarHeight,
       child:
           // Use a Column for the main layout, and adjust children based on screen size
           Column(
@@ -137,17 +139,17 @@ class _MainContentState extends State<_MainContent> {
           // Brief Introduction
           Text.rich(
             TextSpan(
-              children: const [
+              children: [
                 TextSpan(
                   text: 'Crafting Mobile Experiences That ',
                   style: TextStyle(
-                    color: NeubrutalismColor.primaryText,
+                    color: context.color.onBackground,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 TextSpan(
                   text: 'Matter',
-                  style: TextStyle(color: NeubrutalismColor.primary),
+                  style: TextStyle(color: context.color.primary),
                 ),
               ],
               style: GoogleFonts.spaceGrotesk(
@@ -157,7 +159,7 @@ class _MainContentState extends State<_MainContent> {
                         ? 40
                         : 56,
                 fontWeight: FontWeight.bold,
-                color: NeubrutalismColor.primaryText,
+                color: context.color.onBackground,
               ),
             ),
             key: const Key('intro_title'),
@@ -165,7 +167,7 @@ class _MainContentState extends State<_MainContent> {
           )
               .animate(target: _isVisible ? 1 : 0) // Use flutter_animate
               .fadeIn(duration: 800.ms)
-              .slide(begin: const Offset(-0.1, 0), curve: Curves.easeOutExpo),
+              .slideX(begin: -0.3, curve: Curves.easeOutExpo),
           const SizedBox(height: 20),
           // Description Text
           Text(
@@ -177,7 +179,7 @@ class _MainContentState extends State<_MainContent> {
                       ? 18
                       : 20,
               fontWeight: FontWeight.w500,
-              color: NeubrutalismColor.secondaryText,
+              color: context.color.secondary,
               height: 1.6,
             ),
             key: const Key('intro_description'),
@@ -185,7 +187,7 @@ class _MainContentState extends State<_MainContent> {
           )
               .animate(target: _isVisible ? 1 : 0) // Use flutter_animate
               .fadeIn(duration: 800.ms, delay: 400.ms)
-              .slide(begin: const Offset(-0.1, 0), curve: Curves.easeOutExpo),
+              .slideX(begin: -.3, curve: Curves.easeOutExpo),
 
           const SizedBox(height: 30),
           // Call-to-Action Buttons Row
@@ -198,26 +200,41 @@ class _MainContentState extends State<_MainContent> {
               NeubrutalismContainer.button(
                 key: const Key('view_projects_button'),
                 width: widget.isMobile ? 120 : 150,
-                color: NeubrutalismColor.primary,
+                color: context.color.primary,
                 spreadRadius: 4,
                 label: 'View Projects',
                 labelColor: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  if ((context.findAncestorStateOfType<MainPageState>()) !=
+                      null) {
+                    (context.findAncestorStateOfType<MainPageState>())
+                        ?.scrollToSection(
+                            (context.findAncestorStateOfType<MainPageState>())!
+                                .projectsKey);
+                  }
+                },
               ),
               NeubrutalismContainer.button(
                 key: const Key('contact_me_button'),
                 width: widget.isMobile ? 120 : 150,
-                color: Colors.white,
+                color: context.color.background,
+                labelColor: context.color.onBackground,
                 onPressed: () async {
-                  // Removed url_launcher
+                  if ((context.findAncestorStateOfType<MainPageState>()) !=
+                      null) {
+                    (context.findAncestorStateOfType<MainPageState>())
+                        ?.scrollToSection(
+                            (context.findAncestorStateOfType<MainPageState>())!
+                                .contactKey);
+                  }
                 },
                 label: 'Contact Me',
               ),
             ],
           )
               .animate(target: _isVisible ? 1 : 0) // Use flutter_animate
-              .fadeIn(duration: 800.ms, delay: 800.ms)
-              .slide(begin: const Offset(-0.1, 0), curve: Curves.easeOutExpo),
+              .fadeIn(duration: 800.ms, delay: 1000.ms)
+              .slideX(begin: -.3, curve: Curves.easeOutExpo),
         ],
       ),
     );
@@ -304,15 +321,16 @@ class _RightSideState extends State<_RightSide> {
         // Responsive padding
         padding: EdgeInsets.symmetric(vertical: widget.isTablet ? 20 : 60.0),
         children: [
-          const NeubrutalismContainer(
+          NeubrutalismContainer(
+            color: context.color.background,
             child: Icon(Icons.smartphone,
-                size: 60.0, color: NeubrutalismColor.primary),
+                size: 60.0, color: context.color.primary),
           ).animate(target: _isVisible ? 1 : 0).fadeIn(duration: 800.ms).slide(
               begin: const Offset(0, 0.2),
               curve: Curves.easeOut), //animate widget
-          const NeubrutalismContainer(
-            color: NeubrutalismColor.primary,
-            child: Icon(Icons.rocket, size: 60.0, color: Colors.white),
+          NeubrutalismContainer(
+            color: context.color.primary,
+            child: const Icon(Icons.rocket, size: 60.0, color: Colors.white),
           )
               .animate(target: _isVisible ? 1 : 0)
               .fadeIn(duration: 800.ms, delay: 400.ms)
@@ -351,7 +369,7 @@ class _ExpandedWrapper extends StatelessWidget {
   final Widget child;
   final int flex;
 
-  const _ExpandedWrapper({super.key, required this.child, this.flex = 1});
+  const _ExpandedWrapper({required this.child, this.flex = 1});
 
   @override
   Widget build(BuildContext context) {

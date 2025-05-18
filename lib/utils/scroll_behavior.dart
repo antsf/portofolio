@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
-class AppScrollBehavior extends ScrollBehavior {
+class AppScrollBehavior extends MaterialScrollBehavior {
   @override
   Set<PointerDeviceKind> get dragDevices => {
         PointerDeviceKind.touch,

@@ -46,7 +46,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
         padding: EdgeInsets.symmetric(
             horizontal: context.horizontalPadding,
             vertical: context.verticalPadding),
-        color: Colors.white,
+        color: context.color.surface,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -81,7 +81,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                     style: GoogleFonts.spaceGrotesk(
                       fontSize: isMobile ? 28 : 36,
                       fontWeight: FontWeight.bold,
-                      color: NeubrutalismColor.primaryText,
+                      color: context.color.onSurface,
                     ),
                   )
                       .animate(
@@ -102,7 +102,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                             : context.isTablet
                                 ? 16
                                 : 18,
-                        color: NeubrutalismColor.secondaryText,
+                        color: context.color.secondary,
                         fontWeight: FontWeight.w500),
                   )
                       .animate(
@@ -120,7 +120,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                     style: GoogleFonts.spaceGrotesk(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: NeubrutalismColor.primaryText,
+                      color: context.color.onSurface,
                     ),
                   )
                       .animate(
@@ -183,7 +183,7 @@ class _SkillChipState extends State<_SkillChip> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
           border: Border.all(color: NeubrutalismColor.primaryText, width: 2),
-          color: NeubrutalismColor.primary,
+          color: context.color.primary,
         ),
         child: Text(
           widget.label,

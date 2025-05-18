@@ -4,6 +4,7 @@ import 'package:flutter_portfolio/constants/colors.dart';
 import 'package:flutter_portfolio/utils/extensions.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import 'neubrutalism_container.dart';
@@ -37,7 +38,7 @@ class _FooterState extends State<Footer> {
         padding: EdgeInsets.symmetric(
             horizontal: context.horizontalPadding,
             vertical: context.verticalPadding),
-        color: NeubrutalismColor.primary,
+        color: context.color.primary,
         child: Column(
           children: [
             Text(
@@ -80,12 +81,12 @@ class _FooterState extends State<Footer> {
               children: const [
                 _SocialIcon(
                   icon: FontAwesomeIcons.envelope,
-                  url: "mailto:you@example.com",
+                  url: "mailto:arfiantasofa@gmail.com",
                   text: 'Email Me',
                 ),
                 _SocialIcon(
                   icon: FontAwesomeIcons.github,
-                  url: "https://github.com/yourusername ",
+                  url: "https://github.com/antsf",
                   text: 'Github',
                 ),
                 _SocialIcon(
@@ -100,7 +101,7 @@ class _FooterState extends State<Footer> {
                 .slideY(begin: -0.3, duration: 800.ms, curve: Curves.easeInOut),
             const SizedBox(height: 32),
             Text(
-              "© 2025 John Doe. All rights reserved.",
+              "© 2025 Arfi Antasofa. All rights reserved.",
               style: GoogleFonts.inter(
                   color: Colors.white70, fontSize: context.isMobile ? 12 : 14),
             )
@@ -147,7 +148,17 @@ class _SocialIcon extends StatelessWidget {
     //     curve: Curves.easeInOut);
   }
 
-  void _launchUrl(String url) {
-    // Use dart:js or url_launcher later
+  Future<void> _launchUrl(String url) async {
+    // print("Launching URL: $url");
+    // launchUrl(url, mode: LaunchMode.externalApplication).then((value) {
+    //   if (!value) {
+    //     // Handle error if URL cannot be launched
+    //     debugPrint("Could not launch $url");
+    //   }
+    // });
+
+    if (!await launchUrl(Uri.parse(url))) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
