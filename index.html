@@ -260,6 +260,9 @@ body::before {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
+.project-card.span-2 {
+  grid-column: span 2;
+}
 .section { padding: 120px 56px; max-width: 1140px; margin: 0 auto; }
 .section-eyebrow {
   display: flex; align-items: center; gap: 12px;
@@ -282,8 +285,8 @@ body::before {
   margin-bottom: 16px;
 }
 .section-title .muted { color: var(--muted); }
+#projects { padding-top: 170px; }
 .divider { height: 0.5px; background: var(--border); max-width: 1140px; margin: 0 auto; }
-.divider.full { max-width: none; }
 .project-card {
   background: var(--bg2);
   border: 0.5px solid var(--border);
@@ -524,6 +527,7 @@ footer {
   .exp-item::before { display: none; }
   .contact-box { padding: 56px 28px; }
   footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+  #projects { padding-top: 120px; }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
@@ -591,50 +595,54 @@ footer {
     <span class="marquee-item">Swift Learning <span class="marquee-sep">✦</span></span>
   </div>
 </div>
-<div class="projects-grid">
-  <a class="project-card highlight reveal-left" href="https://play.google.com/store/apps/details?id=com.prahu.trantara" target="_blank">
-    <div class="proj-emoji">🚢</div>
-    <div class="proj-name">Ferry Ticketing</div>
-    <div class="proj-desc">End-to-end ferry ticket booking system with a fast and low-error booking flow. <strong>Prahu Hub — as Tech</strong></div>
-    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">REST API</span><span class="proj-tag">Booking Flow</span></div>
-  </a>
-  <a class="project-card highlight reveal-right" href="https://play.google.com/store/apps/details?id=com.astech.antpos" target="_blank">
-    <div class="proj-emoji">🛒</div>
-    <div class="proj-name">POS Application</div>
-    <div class="proj-desc">Point of Sale built with Kotlin Compose — <strong>offline-first</strong>, runs without internet. Fast transactions, high reliability.</div>
-    <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Jetpack Compose</span><span class="proj-tag">Offline-first</span><span class="proj-tag">Android</span></div>
-  </a>
-  <a class="project-card highlight reveal-left" href="https://play.google.com/store/apps/details?id=com.phbid_darat.supir" target="_blank">
-    <div class="proj-emoji">📍</div>
-    <div class="proj-name">Logistics Tracking</div>
-    <div class="proj-desc">Real-time fleet and cargo position monitoring for operational-scale logistics systems.</div>
-    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Real-time</span><span class="proj-tag">Maps</span></div>
-  </a>
-  <a class="project-card highlight reveal-right" href="https://play.google.com/store/apps/details?id=org.seameoceccep.Anaking" target="_blank">
-    <div class="proj-emoji">👶</div>
-    <div class="proj-name">Anaking</div>
-    <div class="proj-desc">Platform digital komprehensif untuk mendukung orang tua dalam mengasuh anak usia 0-4 tahun. Fitur monitoring tumbuh kembang, deteksi dini, ide kegiatan bermain, artikel parenting, forum diskusi, info webinar & kelas daring. <strong>Flutter</strong>.</div>
-    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Parenting</span><span class="proj-tag">Health Tech</span></div>
-  </a>
-  <a class="project-card reveal-left" href="https://play.google.com/store/apps/details?id=com.draiv.draiv_logistik_supplier" target="_blank">
-    <div class="proj-emoji">📦</div>
-    <div class="proj-name">Draiv — Inventory & Stock Opname</div>
-    <div class="proj-desc">Speeds up stock recording and reduces human error during stocktaking.</div>
-    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Offline-first</span></div>
-  </a>
-  <a class="project-card reveal-right" href="https://play.google.com/store/apps/details?id=id.loundrygo.client" target="_blank">
-    <div class="proj-emoji">🧺</div>
-    <div class="proj-name">LoundryGo — Laundry Management</div>
-    <div class="proj-desc">Order management and real-time laundry status tracking for operational efficiency.</div>
-    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Order Mgmt</span></div>
-  </a>
-  <a class="project-card reveal-left" href="https://play.google.com/store/apps/details?id=com.tambal_ban" target="_blank">
-    <div class="proj-emoji">🔧</div>
-    <div class="proj-name">Tire Repair Locator</div>
-    <div class="proj-desc">Nearest tire repair location search with map-based user location detection.</div>
-    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Google Maps</span><span class="proj-tag">Geolocation</span></div>
-  </a>
-</div>
+<section class="section" id="projects">
+  <div class="section-eyebrow reveal-left">Projects</div>
+  <h2 class="section-title reveal-left reveal-delay-1">What I've<br><span class="muted">shipped.</span></h2>
+  <div class="projects-grid">
+    <a class="project-card highlight span-2 reveal-left" href="https://play.google.com/store/apps/details?id=com.prahu.trantara" target="_blank">
+      <div class="proj-emoji">🚢</div>
+      <div class="proj-name">Ferry Ticketing</div>
+      <div class="proj-desc">End-to-end ferry ticket booking system with a fast and low-error booking flow. <strong>Prahu Hub — as Tech</strong></div>
+      <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">REST API</span><span class="proj-tag">Booking Flow</span></div>
+    </a>
+    <a class="project-card highlight reveal-right" href="https://play.google.com/store/apps/details?id=com.astech.antpos" target="_blank">
+      <div class="proj-emoji">🛒</div>
+      <div class="proj-name">POS Application</div>
+      <div class="proj-desc">Point of Sale built with Kotlin Compose — <strong>offline-first</strong>, runs without internet. Fast transactions, high reliability.</div>
+      <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Jetpack Compose</span><span class="proj-tag">Offline-first</span><span class="proj-tag">Android</span></div>
+    </a>
+    <a class="project-card highlight reveal-left" href="https://play.google.com/store/apps/details?id=com.phbid_darat.supir" target="_blank">
+      <div class="proj-emoji">📍</div>
+      <div class="proj-name">Logistics Tracking</div>
+      <div class="proj-desc">Real-time fleet and cargo position monitoring for operational-scale logistics systems.</div>
+      <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Real-time</span><span class="proj-tag">Maps</span></div>
+    </a>
+    <a class="project-card highlight span-2 reveal-right" href="https://play.google.com/store/apps/details?id=org.seameoceccep.Anaking" target="_blank">
+      <div class="proj-emoji">👶</div>
+      <div class="proj-name">Anaking</div>
+      <div class="proj-desc">Platform digital komprehensif untuk mendukung orang tua dalam mengasuh anak usia 0-4 tahun. Fitur monitoring tumbuh kembang, deteksi dini, ide kegiatan bermain, artikel parenting, forum diskusi, info webinar & kelas daring. <strong>Flutter</strong>.</div>
+      <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Parenting</span><span class="proj-tag">Health Tech</span></div>
+    </a>
+    <a class="project-card reveal-left" href="https://play.google.com/store/apps/details?id=com.draiv.draiv_logistik_supplier" target="_blank">
+      <div class="proj-emoji">📦</div>
+      <div class="proj-name">Draiv — Inventory & Stock Opname</div>
+      <div class="proj-desc">Speeds up stock recording and reduces human error during stocktaking.</div>
+      <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Offline-first</span></div>
+    </a>
+    <a class="project-card reveal-right" href="https://play.google.com/store/apps/details?id=id.loundrygo.client" target="_blank">
+      <div class="proj-emoji">🧺</div>
+      <div class="proj-name">LoundryGo — Laundry Management</div>
+      <div class="proj-desc">Order management and real-time laundry status tracking for operational efficiency.</div>
+      <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Order Mgmt</span></div>
+    </a>
+    <a class="project-card reveal-left" href="https://play.google.com/store/apps/details?id=com.tambal_ban" target="_blank">
+      <div class="proj-emoji">🔧</div>
+      <div class="proj-name">Tire Repair Locator</div>
+      <div class="proj-desc">Nearest tire repair location search with map-based user location detection.</div>
+      <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Google Maps</span><span class="proj-tag">Geolocation</span></div>
+    </a>
+  </div>
+</section>
 <div class="divider"></div>
 <section class="section" id="experience">
   <div class="section-eyebrow reveal-left">Experience</div>
