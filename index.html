@@ -528,9 +528,11 @@ footer {
   .exp-item { grid-template-columns: 1fr; gap: 20px; }
   .exp-item::before { display: none; }
   .contact-box { padding: 56px 28px; }
+  .contact-big { font-size: clamp(28px, 8vw, 68px); overflow-wrap: break-word; }
   footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
   #projects { padding-top: 120px; }
-  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card.span-2 { grid-column: span 1; }
 }
 </style>
 <base target="_blank">
