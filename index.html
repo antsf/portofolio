@@ -172,11 +172,12 @@ body::before {
 }
 .hero h1 {
   font-family: var(--font-head);
-  font-size: clamp(56px, 8vw, 110px);
+  font-size: clamp(32px, 8vw, 110px);
   font-weight: 800;
-  line-height: 0.92;
+  line-height: 1.05;
   letter-spacing: -0.05em;
   margin-bottom: 40px;
+  overflow-wrap: break-word;
 }
 .hero h1 .gray { color: rgba(255,255,255,0.18); }
 .hero h1 .accent-word { color: var(--accent); }
@@ -520,6 +521,7 @@ footer {
   .hero { padding: 100px 24px 60px; }
   .hero-scroll-hint { display: none; }
   .hero-bottom { flex-direction: column; gap: 32px; }
+  .section-title { font-size: clamp(28px, 7vw, 60px); }
   .section { padding: 80px 24px; }
   .about-layout { grid-template-columns: 1fr; gap: 56px; }
   .stack-grid { grid-template-columns: 1fr; }
