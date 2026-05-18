@@ -255,36 +255,10 @@ body::before {
   transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal-scale.visible { opacity: 1; transform: scale(1); }
-.sticky-scroll-wrap { position: relative; }
-.sticky-scroll-inner {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-.sticky-scroll-track {
-  display: flex;
-  gap: 24px;
-  padding: 56px;
-  will-change: transform;
-}
-.sticky-scroll-track .project-card {
-  min-width: 360px;
-  width: 360px;
-  flex-shrink: 0;
-}
-.sticky-scroll-track .project-card.large {
-  min-width: 480px;
-  width: 480px;
-}
-.sticky-scroll-track .project-card.highlight {
-  border-color: rgba(200,242,90,0.3);
-  background: linear-gradient(135deg, var(--bg2) 0%, rgba(200,242,90,0.04) 100%);
-}
-.sticky-scroll-track .project-card.highlight::before {
-  opacity: 1;
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 .section { padding: 120px 56px; max-width: 1140px; margin: 0 auto; }
 .section-eyebrow {
@@ -536,10 +510,6 @@ footer {
   transition: transform 0.9s cubic-bezier(0.16,1,0.3,1);
 }
 .line-reveal.visible span { transform: translateY(0); }
-.project-spacer {
-  height: 100vh;
-  pointer-events: none;
-}
 @media (max-width: 900px) {
   nav { padding: 20px 24px; }
   nav.scrolled { padding: 14px 24px; }
@@ -554,10 +524,7 @@ footer {
   .exp-item::before { display: none; }
   .contact-box { padding: 56px 28px; }
   footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
-  .sticky-scroll-track { padding: 24px; gap: 16px; }
-  .sticky-scroll-track .project-card { min-width: 280px; width: 280px; }
-  .sticky-scroll-track .project-card.large { min-width: 280px; width: 280px; }
-  .project-spacer { height: 60vh; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 <base target="_blank">
@@ -624,57 +591,51 @@ footer {
     <span class="marquee-item">Swift Learning <span class="marquee-sep">✦</span></span>
   </div>
 </div>
-<div class="sticky-scroll-wrap">
-  <div class="project-spacer"></div>
-  <div class="sticky-scroll-inner" id="projectsSticky">
-    <div class="sticky-scroll-track" id="projectsTrack">
-      <a class="project-card highlight" href="https://play.google.com/store/apps/details?id=com.prahu.trantara" target="_blank">
-        <div class="proj-emoji">🚢</div>
-        <div class="proj-name">Ferry Ticketing</div>
-        <div class="proj-desc">End-to-end ferry ticket booking system with a fast and low-error booking flow. <strong>Prahu Hub — as Tech</strong></div>
-        <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">REST API</span><span class="proj-tag">Booking Flow</span></div>
-      </a>
-      <a class="project-card highlight" href="https://play.google.com/store/apps/details?id=com.astech.antpos" target="_blank">
-        <div class="proj-emoji">🛒</div>
-        <div class="proj-name">POS Application</div>
-        <div class="proj-desc">Point of Sale built with Kotlin Compose — <strong>offline-first</strong>, runs without internet. Fast transactions, high reliability.</div>
-        <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Jetpack Compose</span><span class="proj-tag">Offline-first</span><span class="proj-tag">Android</span></div>
-      </a>
-      <a class="project-card highlight" href="https://play.google.com/store/apps/details?id=com.phbid_darat.supir" target="_blank">
-        <div class="proj-emoji">📍</div>
-        <div class="proj-name">Logistics Tracking</div>
-        <div class="proj-desc">Real-time fleet and cargo position monitoring for operational-scale logistics systems.</div>
-        <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Real-time</span><span class="proj-tag">Maps</span></div>
-      </a>
-      <a class="project-card highlight" href="https://play.google.com/store/apps/details?id=org.seameoceccep.Anaking" target="_blank">
-        <div class="proj-emoji">👶</div>
-        <div class="proj-name">Anaking</div>
-        <div class="proj-desc">Platform digital komprehensif untuk mendukung orang tua dalam mengasuh anak usia 0-4 tahun. Fitur monitoring tumbuh kembang, deteksi dini, ide kegiatan bermain, artikel parenting, forum diskusi, info webinar & kelas daring. <strong>Flutter</strong>.</div>
-        <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Parenting</span><span class="proj-tag">Health Tech</span></div>
-      </a>
-      <a class="project-card" href="https://play.google.com/store/apps/details?id=com.draiv.draiv_logistik_supplier" target="_blank">
-        <div class="proj-emoji">📦</div>
-        <div class="proj-name">Draiv — Inventory & Stock Opname</div>
-        <div class="proj-desc">Speeds up stock recording and reduces human error during stocktaking.</div>
-        <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Offline-first</span></div>
-      </a>
-      <a class="project-card" href="https://play.google.com/store/apps/details?id=id.loundrygo.client" target="_blank">
-        <div class="proj-emoji">🧺</div>
-        <div class="proj-name">LoundryGo — Laundry Management</div>
-        <div class="proj-desc">Order management and real-time laundry status tracking for operational efficiency.</div>
-        <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Order Mgmt</span></div>
-      </a>
-      <a class="project-card" href="https://play.google.com/store/apps/details?id=com.tambal_ban" target="_blank">
-        <div class="proj-emoji">🔧</div>
-        <div class="proj-name">Tire Repair Locator</div>
-        <div class="proj-desc">Nearest tire repair location search with map-based user location detection.</div>
-        <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Google Maps</span><span class="proj-tag">Geolocation</span></div>
-      </a>
-    </div>
-  </div>
-  <div class="project-spacer"></div>
+<div class="projects-grid">
+  <a class="project-card highlight reveal-left" href="https://play.google.com/store/apps/details?id=com.prahu.trantara" target="_blank">
+    <div class="proj-emoji">🚢</div>
+    <div class="proj-name">Ferry Ticketing</div>
+    <div class="proj-desc">End-to-end ferry ticket booking system with a fast and low-error booking flow. <strong>Prahu Hub — as Tech</strong></div>
+    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">REST API</span><span class="proj-tag">Booking Flow</span></div>
+  </a>
+  <a class="project-card highlight reveal-right" href="https://play.google.com/store/apps/details?id=com.astech.antpos" target="_blank">
+    <div class="proj-emoji">🛒</div>
+    <div class="proj-name">POS Application</div>
+    <div class="proj-desc">Point of Sale built with Kotlin Compose — <strong>offline-first</strong>, runs without internet. Fast transactions, high reliability.</div>
+    <div class="proj-tags"><span class="proj-tag">Kotlin</span><span class="proj-tag">Jetpack Compose</span><span class="proj-tag">Offline-first</span><span class="proj-tag">Android</span></div>
+  </a>
+  <a class="project-card highlight reveal-left" href="https://play.google.com/store/apps/details?id=com.phbid_darat.supir" target="_blank">
+    <div class="proj-emoji">📍</div>
+    <div class="proj-name">Logistics Tracking</div>
+    <div class="proj-desc">Real-time fleet and cargo position monitoring for operational-scale logistics systems.</div>
+    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Real-time</span><span class="proj-tag">Maps</span></div>
+  </a>
+  <a class="project-card highlight reveal-right" href="https://play.google.com/store/apps/details?id=org.seameoceccep.Anaking" target="_blank">
+    <div class="proj-emoji">👶</div>
+    <div class="proj-name">Anaking</div>
+    <div class="proj-desc">Platform digital komprehensif untuk mendukung orang tua dalam mengasuh anak usia 0-4 tahun. Fitur monitoring tumbuh kembang, deteksi dini, ide kegiatan bermain, artikel parenting, forum diskusi, info webinar & kelas daring. <strong>Flutter</strong>.</div>
+    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Parenting</span><span class="proj-tag">Health Tech</span></div>
+  </a>
+  <a class="project-card reveal-left" href="https://play.google.com/store/apps/details?id=com.draiv.draiv_logistik_supplier" target="_blank">
+    <div class="proj-emoji">📦</div>
+    <div class="proj-name">Draiv — Inventory & Stock Opname</div>
+    <div class="proj-desc">Speeds up stock recording and reduces human error during stocktaking.</div>
+    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Offline-first</span></div>
+  </a>
+  <a class="project-card reveal-right" href="https://play.google.com/store/apps/details?id=id.loundrygo.client" target="_blank">
+    <div class="proj-emoji">🧺</div>
+    <div class="proj-name">LoundryGo — Laundry Management</div>
+    <div class="proj-desc">Order management and real-time laundry status tracking for operational efficiency.</div>
+    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Order Mgmt</span></div>
+  </a>
+  <a class="project-card reveal-left" href="https://play.google.com/store/apps/details?id=com.tambal_ban" target="_blank">
+    <div class="proj-emoji">🔧</div>
+    <div class="proj-name">Tire Repair Locator</div>
+    <div class="proj-desc">Nearest tire repair location search with map-based user location detection.</div>
+    <div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Google Maps</span><span class="proj-tag">Geolocation</span></div>
+  </a>
 </div>
-<div class="divider full"></div>
+<div class="divider"></div>
 <section class="section" id="experience">
   <div class="section-eyebrow reveal-left">Experience</div>
   <h2 class="section-title reveal-left reveal-delay-1">Where I've<br><span class="muted">been building.</span></h2>
@@ -712,6 +673,16 @@ footer {
           <li>Built Flutter apps end-to-end — from Figma designs to production releases</li>
           <li>REST API integration and state management implementation</li>
           <li>Performance optimization and ongoing app maintenance</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal-right reveal-delay-2">
+      <div class="exp-left"><div class="exp-period">2019 – 2021</div><div class="exp-co">Freelance</div><div class="exp-badge">Early Career</div></div>
+      <div class="exp-right">
+        <div class="exp-role">Web Developer<br>&amp; UI/UX</div>
+        <ul class="exp-bullets">
+          <li>Belajar dan mengerjakan <strong>website</strong>, <strong>aplikasi</strong>, dan <strong>design UI/UX</strong></li>
+          <li>Built foundational full-stack and design skills across various freelance projects</li>
         </ul>
       </div>
     </div>
@@ -840,25 +811,7 @@ window.addEventListener('scroll', () => {
     bgText.style.transform = 'translate(-50%, calc(-50% + ' + window.scrollY * 0.3 + 'px))';
   }
 });
-const projectsTrack = document.getElementById('projectsTrack');
-const projectsSticky = document.getElementById('projectsSticky');
-const spacer = document.querySelector('.project-spacer');
-function updateHorizontalScroll() {
-  if (!projectsTrack || !projectsSticky || !spacer) return;
-  const wrap = projectsSticky.parentElement;
-  const wrapTop = wrap.offsetTop;
-  const scrollY = window.scrollY;
-  const trackWidth = projectsTrack.scrollWidth;
-  const viewportWidth = window.innerWidth;
-  const maxScroll = trackWidth - viewportWidth + 112;
-  const scrollRange = spacer.offsetHeight * 2;
-  let progress = (scrollY - wrapTop + window.innerHeight) / scrollRange;
-  progress = Math.max(0, Math.min(1, progress));
-  projectsTrack.style.transform = 'translateX(' + (-progress * maxScroll) + 'px)';
-}
-window.addEventListener('scroll', updateHorizontalScroll);
-window.addEventListener('resize', updateHorizontalScroll);
-setTimeout(updateHorizontalScroll, 100);
+
 </script>
 </body>
 </html>
